@@ -1,0 +1,19 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samrmay/top-five.git"
+  },
+  "author": "samrmay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samrmay/top-five/issues"
+  },
+  "homepage": "https://github.com/samrmay/top-five#readme"
+}

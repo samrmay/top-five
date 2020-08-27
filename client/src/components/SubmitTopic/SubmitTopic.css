@@ -1,0 +1,18 @@
+.submit-topic-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: red
+
+}
+    .submit-topic-header-container {
+        background-color: whitesmoke;
+        margin: 5px
+    }   
+        .submit-topic-header {
+            color: black
+        }
+    
+    .topic-submission-field {
+        margin: 5px
+    }

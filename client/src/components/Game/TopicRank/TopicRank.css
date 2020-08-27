@@ -1,0 +1,30 @@
+ .topic-rank-container {
+     display: flex;
+     flex-direction: column;
+     align-content: center;
+     margin: 10px;
+     width: 100px;
+     padding: 10px;
+ }
+
+ .topic-rank-container-balance {
+     width: 100px;
+     margin: 20px
+ }
+
+    .topic-rank-upvote {
+        width: 100;
+        height: 100;
+        background-color: white;
+    }
+
+    .topic-rank-divider {
+        width: 100%;
+        border-color: black
+    }
+
+    .topic-rank-downvote {
+        width: 100;
+        height: 100;
+        background-color: white
+    }

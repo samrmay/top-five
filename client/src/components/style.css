@@ -1,0 +1,28 @@
+.root {
+    display: flex;
+    flex-direction: column;
+}
+
+    .header {
+        background-color: slategray;
+        padding: 10px;
+        margin: -10px -10px 0 -10px;
+        display: flex;
+        flex-direction: row
+    }
+        .header-text {
+            align-self: center;
+            justify-self: flex-start
+        }
+
+.game-submittopic-divider {
+    width: 120%;
+    align-self: center;
+    margin: 10px -10px 10px -10px;
+    border-color: black;
+}
+
+.submission-container {
+    display: flex;
+    background-color: slategrey
+}

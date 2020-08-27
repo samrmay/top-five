@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "top-five-backend",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d dist",
+    "development": "nodemon --exec babel-node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samrmay/top-five.git"
+  },
+  "author": "samrmay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samrmay/top-five/issues"
+  },
+  "homepage": "https://github.com/samrmay/top-five#readme",
+  "dependencies": {
+    "core-js": "^2.6.11",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.1.0",
+    "mongoose": "^5.10.1",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}

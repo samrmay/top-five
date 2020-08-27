@@ -1,0 +1,46 @@
+.game-container {
+    background-color: silver;
+    padding: 10px;
+    margin: 0 -10px -10px -10px;
+    display: flex;
+    flex-direction: column;
+}
+
+    .game-body {
+        display: flex;
+        flex-direction: row;
+        justify-self: center;
+        align-self: center;
+        width: 50%;
+    }
+
+    .game-prompt {
+        background-color: whitesmoke;
+        padding: 10px;
+        align-self: center;
+        justify-self: center;
+        min-width: 60%;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .game-topic {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center
+        }
+
+            .game-topic-header {
+                align-self: center
+            }
+
+            .game-topic-content {
+                align-self: center
+            }
+    
+
+.game-fetch-prompt-button {
+    align-self: center;
+    margin: 20px 10px 10px 10px
+}
