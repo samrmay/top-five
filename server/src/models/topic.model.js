@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const topicSchema = new Schema({
-    cat: Schema.Types.ObjectId, ref: 'cat',
+    cat: {type: Schema.Types.ObjectId, ref: 'Cat'},
     prompt: String,
     rank: Number,
     createdBy: String,

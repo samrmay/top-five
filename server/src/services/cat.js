@@ -10,6 +10,6 @@ export const addCat = async (name, createdBy) => {
 }
 
 export const getCats = async (name = null) => {
-    if (name) {return await Cat.find({name: name})}
+    if (name) {return await Cat.findOne({name: name})}
     return await Cat.find()
 }
