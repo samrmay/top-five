@@ -10,7 +10,7 @@ class GameContainer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            cat: 'music',
+            cat: null,
             topic: {},
             displayAns: false
         }
@@ -23,21 +23,27 @@ class GameContainer extends React.Component {
         this.fetchTopic()
     }
 
-    setCat(event) {
-        const newCat = event.target.value
+    async setCat(event) {
+        console.log('Loading cat')
+        const newCat = (await fetch(process.env.backendUrl + 'cats', {
+            body: JSON.stringify(event.target.value)
+        })).json()
+        console.log('cat loaded')
         this.setState({cat: newCat})
         // Delay fetching topic until state of component is updated (necessary I think)
         setTimeout(this.fetchTopic, 10)
     }
 
-    fetchTopic() {
+    async fetchTopic() {
         if (this.state.displayAns) {this.displayAnsSwitch()}
-        const cat = this.props.dataset[this.state.cat]
-        let newTopic = cat[Math.floor(Math.random() * cat.length)]
-        while (this.state.topic === newTopic) {
-            newTopic = cat[Math.floor(Math.random() * cat.length)]
+        const cat = this.state.cat
+        let newTopicId = cat.topics[Math.floor(Math.random() * cat.topics.length)]
+        while (String(this.state.topic._id) === String(newTopicId)) {
+            newTopicId = cat.topics[Math.floor(Math.random() * cat.topics.length)]
         }
-        this.setState({topic: newTopic})
+        console.log('loading topic')
+        const newTopic = await fetch(process.env.backendUrl + `topics/${newTopicId}`)
+        console.log('topic loaded')
     }
 
     displayAnsSwitch() {

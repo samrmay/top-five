@@ -5,12 +5,12 @@ import { getCats } from '../../services/cat'
 const route = express.Router()
 
 export default (router) => {
-    router.use('/topics/', route)
+    router.use('/topics', route)
 
-    // Get single topic from given category
-    route.get('/:catId', async (req, res) => {
-        const topic = await getSingleTopic(req.params.catId)
-        if (!topic) {return res.status(404).send('Error: category not found or has no topics')}
+    // Get single topic
+    route.get('/:topicId', async (req, res) => {
+        const topic = await getTopic(req.params.topicId)
+        if (!topic) {return res.status(404).send('Error: topic not found')}
         res.status(200).send(topic)
     })
 

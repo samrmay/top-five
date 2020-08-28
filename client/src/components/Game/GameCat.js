@@ -8,7 +8,7 @@ class GameCat extends React.Component {
             <div className='categories-select-container'>
                 <Select 
                     onChange={this.props.setCat}
-                    value={this.props.cat}
+                    value={this.props.cat.name}
                     style={{backgroundColor: 'whitesmoke', padding: '5px'}}>
                     <MenuItem value='music'>Music</MenuItem>
                     <MenuItem value='sports'>Sports</MenuItem>
