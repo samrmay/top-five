@@ -37,6 +37,7 @@ class GameContainer extends React.Component {
     }
 
     fetchPrompt () {
+        this.state.displayAns && this.displayAnsSwitch()
         const lastTopicId = this.state.topic ? this.state.topic._id : 0
         this.setState({topic: {
             prompt: 'Loading...',
