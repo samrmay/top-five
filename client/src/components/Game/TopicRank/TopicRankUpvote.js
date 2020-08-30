@@ -1,17 +1,17 @@
 import React from 'react'
 import './TopicRank.css'
+import upvoteImgActive from '../../../resources/arrow-up-active.svg'
+import upvoteImgDeactive from '../../../resources/arrow-up-deactive.svg'
 
 function TopicRankUpvote(props) {
     return(
         <div className='topic-rank-upvote-container'>
-            <div 
+            <img
                 className='topic-rank-upvote'
                 name='isUpvoted'
                 onClick={props.handleChange}
-                style={props.isUpvoted ? {backgroundColor: 'red'} : null}
-                >
-                Upvote
-            </div>
+                src={props.isUpvoted ? upvoteImgActive : upvoteImgDeactive}
+                />
         </div>
     )
 }

@@ -34,6 +34,7 @@ class GameContainer extends React.Component {
 
     setCat(event) {
         this.setState({cat: this.state.catsOptions[event.target.value]})
+        setTimeout(this.fetchPrompt, 200)
     }
 
     fetchPrompt () {
@@ -62,7 +63,9 @@ class GameContainer extends React.Component {
     render() {
         return(
             <div className='game-container'>
-                <GameCat setCat={this.setCat} cat={this.state.cat} catsOptions={this.state.catsOptions}/>
+                <GameCat setCat={this.setCat} 
+                    cat={this.state.cat} 
+                    catsOptions={this.state.catsOptions}/>
                 <div className='game-body'>
                     <div className='topic-rank-container-balance' />
                     <GamePrompt 

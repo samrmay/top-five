@@ -12,6 +12,18 @@
             color: black
         }
     
-    .topic-submission-field {
+    .submit-topic-form-container {
         margin: 5px
     }
+        .submit-topic-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .topic-submission-form {
+                margin: 5px;
+                padding: 5px
+            }
+        .pop-answer-submission-field {
+            margin: 5px
+        }

@@ -1,6 +1,7 @@
 import React from 'react'
 import SubmitTopicHeader from './SubmitTopicHeader'
 import SubmitTopicForm from './SubmitTopicForm'
+import './SubmitTopic.css'
 require("regenerator-runtime/runtime")
 
 
@@ -24,6 +25,7 @@ class SubmitTopicContainer extends React.Component {
     }
 
     handleSubmit() {
+        this.setState({topicSubmittedResponse: -1})
         fetch(process.env.backendUrl + 'topics', {
             "method": "POST",
             "headers": {

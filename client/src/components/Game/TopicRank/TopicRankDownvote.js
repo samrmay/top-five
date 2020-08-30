@@ -1,14 +1,15 @@
 import React from 'react'
+import downvoteImgActive from '../../../resources/arrow-down-active.svg'
+import downvoteImgDeactive from '../../../resources/arrow-down-deactive.svg'
 
 function TopicRankDownvote(props) {
     return(
         <div className='topic-rank-downvote-container'>
-            <div className='topic-rank-downvote' 
+            <img className='topic-rank-downvote' 
                 onClick={props.handleChange}
                 name='isDownvoted'
-                style={props.isDownvoted ? {backgroundColor: 'blue'} : null}>
-                Downvote
-            </div>
+                src={props.isDownvoted ? downvoteImgActive : downvoteImgDeactive}
+                />
         </div>
     )
 }
