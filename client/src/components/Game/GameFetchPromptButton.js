@@ -6,7 +6,7 @@ function GameFetchPromptButton(props) {
     return(
         <div className='game-fetch-prompt-button'>
             <Button 
-                onClick={props.fetchTopic}
+                onClick={props.fetchPrompt}
                 variant='contained'
                 color='primary'>
                 New Top Five

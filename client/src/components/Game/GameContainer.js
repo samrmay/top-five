@@ -3,47 +3,53 @@ import GamePrompt from './GamePrompt'
 import GameCat from './GameCat'
 import GameFetchPromptButton from './GameFetchPromptButton'
 import TopicRankContainer from './TopicRank/TopicRankContainer.js'
-import './game.css'
-
+require("regenerator-runtime/runtime")
 
 class GameContainer extends React.Component {
+
     constructor(props) {
         super(props)
         this.state = {
-            cat: null,
+            cat: '',
+            catsOptions: [],
             topic: {},
             displayAns: false
         }
         this.setCat = this.setCat.bind(this)
         this.displayAnsSwitch = this.displayAnsSwitch.bind(this)
-        this.fetchTopic = this.fetchTopic.bind(this)
+        this.fetchPrompt = this.fetchPrompt.bind(this)
     }
 
     componentDidMount () {
-        this.fetchTopic()
+        fetch(process.env.backendUrl + "cats", {
+            "method": "GET",
+            "headers": {
+                "Accept": "*/*"
+            }
+        })
+        .then(response => response.json())
+        .then(response => this.setState({catsOptions: response}))
+        .catch((er) => {console.log(er)})
     }
 
-    async setCat(event) {
-        console.log('Loading cat')
-        const newCat = (await fetch(process.env.backendUrl + 'cats', {
-            body: JSON.stringify(event.target.value)
-        })).json()
-        console.log('cat loaded')
-        this.setState({cat: newCat})
-        // Delay fetching topic until state of component is updated (necessary I think)
-        setTimeout(this.fetchTopic, 10)
+    setCat(event) {
+        this.setState({cat: this.state.catsOptions[event.target.value]})
     }
 
-    async fetchTopic() {
-        if (this.state.displayAns) {this.displayAnsSwitch()}
-        const cat = this.state.cat
-        let newTopicId = cat.topics[Math.floor(Math.random() * cat.topics.length)]
-        while (String(this.state.topic._id) === String(newTopicId)) {
-            newTopicId = cat.topics[Math.floor(Math.random() * cat.topics.length)]
+    fetchPrompt () {
+        const lastTopicId = this.state.topic ? this.state.topic._id : 0
+        this.setState({topic: {
+            prompt: 'Loading...',
+            popAnswer: ['Loading...', 'Loading...', 'Loading...', 'Loading...', 'Loading...']
+        }})
+        let newTopicId = this.state.cat.topics[Math.floor(Math.random() * this.state.cat.topics.length)]
+        while (newTopicId === lastTopicId) {
+            newTopicId = this.state.cat.topics[Math.floor(Math.random() * this.state.cat.topics.length)]
         }
-        console.log('loading topic')
-        const newTopic = await fetch(process.env.backendUrl + `topics/${newTopicId}`)
-        console.log('topic loaded')
+        fetch(process.env.backendUrl + `/topics/${newTopicId}`)
+        .then(response => response.json())
+        .then(response => this.setState({topic: response}))
+        .catch((er) => (console.log(er)))
     }
 
     displayAnsSwitch() {
@@ -55,7 +61,7 @@ class GameContainer extends React.Component {
     render() {
         return(
             <div className='game-container'>
-                <GameCat setCat={this.setCat} fetchTopic={this.fetchTopic} cat={this.state.cat}/>
+                <GameCat setCat={this.setCat} cat={this.state.cat} catsOptions={this.state.catsOptions}/>
                 <div className='game-body'>
                     <div className='topic-rank-container-balance' />
                     <GamePrompt 
@@ -65,7 +71,7 @@ class GameContainer extends React.Component {
                     <TopicRankContainer
                         topic={this.state.topic}/>
                 </div>
-                <GameFetchPromptButton fetchTopic={this.fetchTopic}/>
+                <GameFetchPromptButton fetchPrompt={this.fetchPrompt}/>
             </div>
         )
     }
